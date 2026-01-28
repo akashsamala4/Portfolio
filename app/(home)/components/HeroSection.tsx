@@ -45,15 +45,14 @@ const HeroSection = () => {
       {/* LEFT CONTENT */}
       <div className="relative z-10 flex flex-col items-center lg:items-start gap-8 text-center lg:text-left max-w-xl">
         <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight bg-gradient-to-r from-green-400 to-indigo-500 bg-clip-text text-transparent">
-          Hello! I am Chandrika
-        </h1>
+          Hello! I am <Akash></Akash>        </h1>
         <p className="text-lg sm:text-xl text-gray-300 leading-relaxed">
-          Building the web one pixel at a time. A self-taught developer on a mission to craft elegant, high-performance
-          experiences.
+          Computer Science & AI student passionate about web development and building modern, user-friendly applications.
+
         </p>
 
         <div className="flex gap-4">
-          <Link href="mailto:chandrikaeluru2005@gmail.com" className="group">
+          <Link href="mailto:samalaakash4@gmail.com" className="group">
             <Title text="Let's Connect " />
           </Link>
 
