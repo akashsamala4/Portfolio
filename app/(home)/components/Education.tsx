@@ -5,10 +5,10 @@ import {
   FaBookOpen,
   FaCalendarAlt,
   FaGraduationCap,
-  FaUniversity
-} from 'react-icons/fa';
+  FaUniversity,
+} from "react-icons/fa";
 
-// Title Component
+/* ---------------- Title Component ---------------- */
 type TitleProps = {
   text: string;
   className?: string;
@@ -23,7 +23,7 @@ const Title = ({ text, className }: TitleProps) => (
   </div>
 );
 
-// Card Component
+/* ---------------- Card Component ---------------- */
 interface EducationEntryProps {
   degree: string;
   major: string;
@@ -47,36 +47,41 @@ const EducationCard = ({
 }: EducationEntryProps) => (
   <div className="relative bg-gradient-to-br from-gray-800 via-gray-900 to-black p-7 rounded-2xl border border-gray-700 shadow-xl overflow-hidden group transition-all duration-300">
     {isCurrent && (
-      <span className="absolute top-0 right-0 bg-gradient-to-r from-blue-600 to-purple-700 text-white text-xs font-semibold px-4 py-1.5 rounded-bl-lg tracking-wide">
+      <span className="absolute top-0 right-0 bg-gradient-to-r from-blue-600 to-purple-700 text-white text-xs font-semibold px-4 py-1.5 rounded-bl-lg">
         CURRENT
       </span>
     )}
+
     <div className="flex items-start gap-4 mb-4">
-      <FaGraduationCap className="text-blue-400 text-4xl group-hover:text-purple-400 transition-colors duration-300" />
+      <FaGraduationCap className="text-blue-400 text-4xl" />
       <div>
-        <h3 className="text-2xl font-extrabold text-white leading-tight group-hover:text-blue-300">
-          {degree}
-        </h3>
-        <p className="text-lg text-blue-300 font-medium">{major}</p>
+        <h3 className="text-2xl font-extrabold text-white">{degree}</h3>
+        <p className="text-lg text-blue-300">{major}</p>
       </div>
     </div>
+
     <div className="text-gray-300 space-y-2 text-base">
       <div className="flex items-center">
-        <FaUniversity className="mr-2 text-purple-400" /> {institution}, {location}
+        <FaUniversity className="mr-2 text-purple-400" />
+        {institution}, {location}
       </div>
       <div className="flex items-center">
-        <FaCalendarAlt className="mr-2 text-purple-400" /> {period}
+        <FaCalendarAlt className="mr-2 text-purple-400" />
+        {period}
       </div>
       {gpa && (
         <div className="flex items-center">
-          <FaAward className="mr-2 text-purple-400" /> GPA: {gpa}
+          <FaAward className="mr-2 text-purple-400" />
+          Score: {gpa}
         </div>
       )}
     </div>
-    {details && details.length > 0 && (
+
+    {details && (
       <div className="mt-5 pt-4 border-t border-gray-700/50">
         <h4 className="font-semibold text-gray-200 mb-2 flex items-center">
-          <FaBookOpen className="mr-2 text-blue-400" /> Key Highlights:
+          <FaBookOpen className="mr-2 text-blue-400" />
+          Highlights
         </h4>
         <ul className="list-disc list-inside text-sm space-y-1 text-gray-400">
           {details.map((item, index) => (
@@ -85,81 +90,60 @@ const EducationCard = ({
         </ul>
       </div>
     )}
-    <div
-      className="absolute inset-0 pointer-events-none rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-      style={{
-        background: 'radial-gradient(circle at top right, rgba(124, 58, 237, 0.08), transparent 70%)',
-      }}
-    />
   </div>
 );
 
-// Main Section
+/* ---------------- Main Section ---------------- */
 const EducationSection = () => {
   const educationData: EducationEntryProps[] = [
     {
       degree: "Bachelor of Technology",
       major: "Computer Science Engineering",
-      institution: "Parul Institute of Technology",
+      institution: "Parul Institute of Engineering and Technology",
       location: "Vadodara, India",
-      period: "July 2022 - May 2026",
-      gpa: "7.5/10 (Expected)",
+      period: "September 2022 – May 2026",
+      gpa: "7.5%",
       details: [
-        "Specialization in Web Development and Machine Learning.",
-        "Relevant coursework: Data Structures & Algorithms, Database Management Systems, Operating Systems, Web Technologies, Artificial Intelligence.",
-        "Actively participated in competitive programming and hackathons.",
-        "Developed a full-stack e-commerce platform as a final year project."
+        "Core subjects include Data Structures, Algorithms, DBMS, and Operating Systems.",
+        "Strong foundation in Python, C++, and problem solving.",
+        "Actively building projects in Web Development and Data Science.",
       ],
       isCurrent: true,
     },
     {
-      degree: "Higher Secondary Education",
-      major: "Science (PCM)",
+      degree: "Intermediate (TSBIE)",
+      major: "MPC (Mathematics, Physics, Chemistry)",
       institution: "Saanvi Junior College",
       location: "Karimnagar, India",
-      period: "April 2020 - March 2022",
-      gpa: "91.8%",
+      period: "July 2020 – January 2022",
+      gpa: "9.18%",
       details: [
-        "Focused on Physics, Chemistry, and Mathematics.",
-        "Participated in inter-school science fairs.",
-        "Awarded 'Student of the Year' for academic excellence and extracurricular involvement."
+        "Focused on Mathematics and analytical problem solving.",
+        "Developed early interest in programming and technology.",
       ],
     },
     {
-      degree: "Secondary School Education",
-      major: "All Subjects",
+      degree: "Secondary School (SSC)",
+      major: "School Education",
       institution: "Universal High School",
       location: "Peddapalli, India",
-      period: "April 2019 - March 2020",
-      gpa: "100%",
+      period: "July 2014 – May 2020",
+      gpa: "9.5%",
       details: [
-        "Completed 10th grade with distinction.",
-        "Active member of the debate club and school newspaper.",
-        "Developed foundational interest in problem-solving and technology."
+        "Completed schooling with strong academic performance.",
+        "Built a solid foundation in logical thinking and problem solving.",
       ],
     },
   ];
 
   return (
-    <section id="education" className="py-20 bg-black-950 relative overflow-hidden">
-      {/* Background Blobs */}
-      <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
-        <div className="absolute -top-32 -left-32 w-96 h-96 bg-blue-600 rounded-full blur-3xl opacity-10"></div>
-        <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-purple-600 rounded-full blur-3xl opacity-10"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-pink-500 rounded-full blur-3xl opacity-5"></div>
-      </div>
+    <section id="education" className="py-20 bg-black relative">
+      <div className="relative z-10 max-w-5xl mx-auto px-6">
+        <Title text="My Education" className="mb-20" />
 
-      <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-8">
-        <Title text="My Educational Journey" className="mb-20" />
-
-        <div className="relative border-l-4 border-gray-700 pl-8 md:pl-12 space-y-14">
+        <div className="space-y-14">
           {educationData.map((entry, index) => (
-            <div key={index} className="relative">
-              {/* <div className="absolute -left-6 top-0 w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 border-2 border-white shadow-md flex items-center justify-center text-white text-xs">
-                <FaBookOpen className="text-sm" />
-              </div> */}
-              <EducationCard {...entry} />
-            </div>
+            <EducationCard key={index} {...entry} />
           ))}
         </div>
       </div>
